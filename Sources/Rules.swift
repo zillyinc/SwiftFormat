@@ -470,18 +470,19 @@ public struct _FormatRules {
                 }
                 fallthrough
             case .operator(_, .postfix), .delimiter(","), .delimiter(";"), .startOfScope(":"):
-                switch formatter.token(at: i + 1) {
-                case nil, .space?, .linebreak?, .endOfScope?:
-                    break
-                default:
-                    // Ensure there is a space after the token
-                    formatter.insertToken(.space(" "), at: i + 1)
-                }
-                if formatter.token(at: i - 1)?.isSpace == true,
-                    formatter.token(at: i - 2)?.isLinebreak == false {
-                    // Remove space before the token
-                    formatter.removeToken(at: i - 1)
-                }
+                // TODO: Properly identify the context of the surrounding tokens, to apply the correct spacing. Cases:
+                // 1. Variable/parameter type: 0 spaces before, 1 space after.
+                //    e.g.: let x: Int
+                // 2. Inheritance/conformance: 1 space before, 1 space after.
+                //    e.g.: class SomeClass : NSObject {
+                //          enum SomeEnum : String {
+                // 3. Array/dictionary types: 0 spaces before, 0 spaces after.
+                //    e.g.: [String:Any]
+                // 4. Array/dictionary literals: Spaces on both sides of the values (but not before commas).
+                //    e.g.: let someDictionary: [String:Any] = [ "One" : 1, "Two" : 2 ]
+                // 5. Empty Literals: No spaces.
+                //    e.g.: let someDictionary: [String:Any] = [:]
+                break
             default:
                 break
             }
