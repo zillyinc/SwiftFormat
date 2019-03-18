@@ -397,7 +397,7 @@ public struct FileOptions {
     public var supportedFileExtensions: [String]
     public var excludedGlobs: [Glob]
 
-    @available(*, deprecated, message: "Use excludedGlobs property instead")
+    @available(* , deprecated, message: "Use excludedGlobs property instead")
     public var excludedURLs: [URL] {
         return excludedGlobs.compactMap {
             switch $0 {
@@ -409,7 +409,7 @@ public struct FileOptions {
 
     public static let `default` = FileOptions()
 
-    @available(*, deprecated, message: "Use other init() method instead")
+    @available(* , deprecated, message: "Use other init() method instead")
     public init(followSymlinks: Bool = false,
                 supportedFileExtensions: [String] = ["swift"],
                 excludedURLs: [URL]) {

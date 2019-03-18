@@ -520,7 +520,7 @@ private struct UnicodeScalarView {
         return isEmpty ? nil : characters[startIndex]
     }
 
-    @available(*, deprecated, message: "Really hurts performance - use a different approach")
+    @available(* , deprecated, message: "Really hurts performance - use a different approach")
     public var count: Int {
         return characters.distance(from: startIndex, to: endIndex)
     }

@@ -104,7 +104,7 @@ public extension _FormatRules {
     }
 
     // deprecated
-    @available(*, deprecated, message: "Use named() method instead")
+    @available(* , deprecated, message: "Use named() method instead")
     func all(named: [String]) -> [FormatRule] {
         return Array(named.sorted().compactMap { rulesByName[$0] })
     }

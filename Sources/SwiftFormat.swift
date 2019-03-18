@@ -67,7 +67,7 @@ public enum FormatError: Error, CustomStringConvertible, LocalizedError, CustomN
 }
 
 /// Legacy file enumeration function
-@available(*, deprecated, message: "Use other enumerateFiles() method instead")
+@available(* , deprecated, message: "Use other enumerateFiles() method instead")
 public func enumerateFiles(withInputURL inputURL: URL,
                            excluding excludedURLs: [URL] = [],
                            outputURL: URL? = nil,
